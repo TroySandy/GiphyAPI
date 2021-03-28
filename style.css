@@ -1,3 +1,55 @@
-body{
-    background-color: black!important;
+body {
+  background-color: black !important;
+  position: relative;
+}
+
+div img {
+  border-radius: 5%;
+  max-width: 150px;
+  box-shadow: 0 0 50px 10px rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  margin: 5px;
+}
+.card {
+  max-height: fit-content;
+  position: relative;
+  background-color: hsl(207, 9%, 19%) !important;
+  align-items: center;
+  justify-content: center;
+
+  max-width: 200px;
+}
+.card:hover {
+  background-color: slategrey !important;
+}
+.card-body {
+  max-width: 150px;
+  align-items: center;
+  justify-content: center;
+}
+section {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(5, fit-content);
+  max-width: 50%;
+  visibility: hidden;
+  align-items: center;
+  justify-content: center;
+}
+h6 {
+  color: white !important;
+}
+section div {
+  margin: 10px;
+}
+.dropdown {
+  align-items: center;
+  justify-content: center;
+}
+article{
+    display: flex;
+}
+
+#random{
+    display: block!important
 }

@@ -5,17 +5,11 @@ let url;
 const searchTerm = document.querySelector(".search");
 const searchForm = document.querySelector("form");
 searchForm.addEventListener("submit", searchResults);
-const section = document.querySelector("section");
-// let offset = pagenumber * 25;
-// let pageNumber = 0;
+const section = document.getElementById("results");
 
 function searchResults(e) {
   e.preventDefault();
-  url = `${searchURL}?api_key=${apiKey}&q=${searchTerm.value}&limit=25&offset=0&rating=pg&lang=en`;
-  console.log("URL:", url);
-
-  
-  console.log("URL", url);
+  url = `${searchURL}?api_key=${apiKey}&q=${searchTerm.value}&limit=25&offset=0&lang=en`;
   fetch(url, {
     method: "GET",
   })
@@ -23,7 +17,6 @@ function searchResults(e) {
       return result.json();
     })
     .then(function (json) {
-      console.log("Search json Pull", json);
       displaySearchResults(json);
     });
 }
@@ -33,49 +26,73 @@ function displaySearchResults(json) {
     section.removeChild(section.firstChild);
   }
   const gifData = json.data;
-  console.log("gifData", gifData);
+  
   // let clearfix = document.createElement('div');
-  console.log(gifData.value);
+  
   // if (gifData.length === 0) {
   //   // will return nothing if there are no articles
-  //   console.log("No results");
+  //   
   // } else {
   for (let x = 0; x < 25; x++) {
     let wrapper = document.createElement("div");
-    let heading = document.createElement("h1");
-    // let link = document.createElement('a');
+    // let heading = document.createElement("h1");
+    // heading.textContent = "Search Results";
+    // wrapper.appendChild(heading);
+    let card = document.createElement("div");
+    let title = document.createElement("h6");
+    let dpDown = document.createElement("div");
+    let btn = document.createElement("button");
+    list = document.createElement("div");
+    smDown = document.createElement("a");
+    orgDown = document.createElement("a");
+    lgDown = document.createElement("a");
     let img = document.createElement("img");
-    let title = document.createElement("p");
-    heading.textContent = "Results";
-    wrapper.appendChild(heading);
     wrapper.appendChild(img);
-    wrapper.appendChild(title);
+    wrapper.appendChild(card);
+    card.appendChild(title);
+    card.appendChild(dpDown);
+    dpDown.appendChild(btn);
+    dpDown.appendChild(list);
+    list.appendChild(smDown);
+    list.appendChild(orgDown);
+    list.appendChild(lgDown);
     section.appendChild(wrapper);
     let current = gifData[x];
-    console.log(current);
+    console.log("current", current);
     // article.appendChild(clearfix);
     img.src = current.images.fixed_height_small.url;
     img.alt = current.title;
     title.textContent = current.title;
+    btn.textContent = "Downloads";
+    smDown.href = current.images.fixed_height_small.url;
+    smDown.target = "_blank";
+    orgDown.href = current.images.original.url;
+    orgDown.target = "_blank";
+    lgDown.href = current.images.original_mp4.mp4;
+    lgDown.target = "_blank";
+    lgDown.classList.add("dropdown-item");
+    lgDown.textContent = "HD MP4";
+    orgDown.classList.add("dropdown-item");
+    orgDown.textContent = "Original size";
+    smDown.classList.add("dropdown-item");
+    smDown.textContent = "Small size";
+    list.classList.add("dropdown-menu");
+    btn.classList.add("btn");
+    btn.classList.add("btn-secondary");
+    btn.classList.add("dropdown-toggle");
+    btn.setAttribute("type", "button");
+    btn.setAttribute("id", "dropdownMenuButton1");
+    btn.setAttribute("data-bs-toggle", "dropdown");
+    btn.setAttribute("aria-expanded", "false");
+    dpDown.classList.add("dropdown");
+    title.classList.add("card-title");
+    card.classList.add("card-body");
+    wrapper.classList.add("card");
+  }
+
+  if (gifData !== "") {
+    section.style.visibility = "visible";
+  } else {
+    section.style.visibility = "hidden";
   }
 }
-
-  function nextPage(e) {
-    console.log('Next button clicked');
-    pageNumber++;
-    fetchResults(e);
-    console.log('Page Number:', pageNumber);
-    }
-//  fetchs the previous page of results
-function previousPage(e) {
-    console.log('Previous button clicked');
-    if (pageNumber >= 0) {
-        pageNumber--;
-        // fetchResults(e);
-    } else {
-
-        return;
-    }
-    fetchResults(e);
-    console.log('Page:', pageNumber);
-  }
