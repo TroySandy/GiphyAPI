@@ -47,7 +47,7 @@ function displayRandomResults(json) {
   let current3 = gifData3;
   console.log("current", current3);
   // article.appendChild(clearfix);
-  img3.src = current3.image_url;
+  img3.src = current3.images.fixed_height_small.url;
   img3.alt = current3.title;
   title3.textContent = current3.title;
 }
