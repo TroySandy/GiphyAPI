@@ -1,0 +1,26 @@
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+    <title>Document</title>
+</head>
+<body>
+<div id="second"></div>
+<!-- <script src="./trending.js"></script> -->
+
+    <form>
+        <label for="search">Enter a SINGLE search term (required): </label>
+            <input type="text" id="search" class="search" required />
+            <button type="submit" class='submit'>click here</button>
+    </form>
+
+
+    <div id="third"></div>
+    <!-- <script src="./random.js"></script> -->
+    
+    
+    
+    <div id="first"></div>
+    <script src='./search.js'></script>
