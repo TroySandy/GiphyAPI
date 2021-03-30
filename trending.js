@@ -1,6 +1,5 @@
 const trendingURL =
   "https://api.giphy.com/v1/gifs/trending?api_key=XwuuImabywP5lT5vtKVt3juk3WGbEjP0&limit=25";
-
 const trendingSection = document.getElementById("trending");
 
 function trendingResults(e) {
@@ -29,14 +28,10 @@ function displayTrendingResults(json) {
       let dpDown2 = document.createElement("div");
       let btn2 = document.createElement("button");
       list2 = document.createElement("div");
-         smDown2 = document.createElement("a");
-        orgDown2 = document.createElement("a");
+      smDown2 = document.createElement("a");
+      orgDown2 = document.createElement("a");
       lgDown2 = document.createElement("a");
-      //   let heading2 = document.createElement("h1");
       let img2 = document.createElement("img");
-      // let clearfix = document.createElement('div');
-      //   heading2.textContent = "Currently Trending";
-      //   wrapper2.appendChild(heading2);
       wrapper2.appendChild(img2);
       wrapper2.appendChild(card2);
       card2.appendChild(title2);
@@ -49,11 +44,9 @@ function displayTrendingResults(json) {
       trendingSection.appendChild(wrapper2);
       let current2 = gifData2[y];
       console.log("current2", current2);
-      // article.appendChild(clearfix);
       img2.src = current2.images.preview_gif.url;
       img2.alt = current2.title;
       title2.textContent = current2.title;
-      btn2.textContent = "Downloads";
       smDown2.href = current2.images.fixed_height_small.url;
       smDown2.target = "_blank";
       orgDown2.href = current2.images.original.url;
@@ -68,7 +61,7 @@ function displayTrendingResults(json) {
       smDown2.textContent = "Small size";
       list2.classList.add("dropdown-menu");
       btn2.classList.add("btn");
-      btn2.classList.add("btn-secondary");
+      btn2.classList.add("btn-outline-info");
       btn2.classList.add("dropdown-toggle");
       btn2.setAttribute("type", "button");
       btn2.setAttribute("id", "dropdownMenuButton1");
@@ -82,8 +75,8 @@ function displayTrendingResults(json) {
   }
 
   if (gifData2 !== "") {
-    trendingSection.style.visibility = "visible";
+    trendingSection.style.display = "grid";
   } else {
-    trendingSection.style.visibility = "hidden";
+    trendingSection.style.display = "none";
   }
 }

@@ -19,25 +19,20 @@ function searchResults(e) {
     .then(function (json) {
       displaySearchResults(json);
     });
+
+    let searchField = document.getElementById('search');
+    searchField.value = ''
 }
 
 function displaySearchResults(json) {
   while (section.firstChild) {
     section.removeChild(section.firstChild);
   }
+
   const gifData = json.data;
-  
-  // let clearfix = document.createElement('div');
-  
-  // if (gifData.length === 0) {
-  //   // will return nothing if there are no articles
-  //   
-  // } else {
+
   for (let x = 0; x < 25; x++) {
     let wrapper = document.createElement("div");
-    // let heading = document.createElement("h1");
-    // heading.textContent = "Search Results";
-    // wrapper.appendChild(heading);
     let card = document.createElement("div");
     let title = document.createElement("h6");
     let dpDown = document.createElement("div");
@@ -59,11 +54,9 @@ function displaySearchResults(json) {
     section.appendChild(wrapper);
     let current = gifData[x];
     console.log("current", current);
-    // article.appendChild(clearfix);
     img.src = current.images.fixed_height_small.url;
     img.alt = current.title;
     title.textContent = current.title;
-    btn.textContent = "Downloads";
     smDown.href = current.images.fixed_height_small.url;
     smDown.target = "_blank";
     orgDown.href = current.images.original.url;
@@ -78,7 +71,7 @@ function displaySearchResults(json) {
     smDown.textContent = "Small size";
     list.classList.add("dropdown-menu");
     btn.classList.add("btn");
-    btn.classList.add("btn-secondary");
+    btn.classList.add("btn-outline-info");
     btn.classList.add("dropdown-toggle");
     btn.setAttribute("type", "button");
     btn.setAttribute("id", "dropdownMenuButton1");
@@ -91,8 +84,12 @@ function displaySearchResults(json) {
   }
 
   if (gifData !== "") {
-    section.style.visibility = "visible";
+    section.style.display = "grid";
   } else {
-    section.style.visibility = "hidden";
+    section.style.display = "none";
   }
+}
+
+function scrollDown() {
+  document.getElementById("navbar").scrollIntoView();
 }

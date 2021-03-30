@@ -1,55 +1,87 @@
 body {
   background-color: black !important;
-  position: relative;
 }
 
 div img {
   border-radius: 5%;
   max-width: 150px;
+  height: auto;
   box-shadow: 0 0 50px 10px rgba(0, 0, 0, 0.5);
-  padding: 10px;
+  padding: 5px;
   margin: 5px;
 }
+
 .card {
   max-height: fit-content;
   position: relative;
-  background-color: hsl(207, 9%, 19%) !important;
   align-items: center;
   justify-content: center;
-
   max-width: 200px;
+  min-width: 150px;
+  padding: 5px;
+  background-color: rgb(26, 25, 25) !important;
 }
+
 .card:hover {
   background-color: slategrey !important;
 }
+
 .card-body {
-  max-width: 150px;
+  max-width: 165px;
   align-items: center;
   justify-content: center;
+  text-align: center;
 }
-section {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: repeat(5, fit-content);
-  max-width: 50%;
-  visibility: hidden;
-  align-items: center;
-  justify-content: center;
-}
+
 h6 {
   color: white !important;
 }
+
 section div {
   margin: 10px;
 }
+
 .dropdown {
   align-items: center;
   justify-content: center;
-}
-article{
-    display: flex;
+  z-index: 5 !important;
 }
 
-#random{
-    display: block!important
+#results {
+  display: none;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(5, fit-content);
+  max-width: 100%;
+  min-width: 20%;
+  align-items: center;
+  justify-content: center;
+  margin: 25px;
+  padding: 10px;
+}
+#trending {
+  display: none;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(5, fit-content);
+  max-width: 100%;
+  min-width: 20%;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  margin: 25px;
+}
+
+nav {
+  position: -webkit-sticky !important;
+  position: sticky !important;
+  top: -1px !important;
+  z-index: 10 !important;
+}
+
+header {
+  height: 91vh;
+}
+
+h1 {
+  text-align: center;
+  color: lightgray;
 }
